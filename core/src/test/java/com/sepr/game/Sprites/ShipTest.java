@@ -7,7 +7,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 class ShipTest {
     Ship ship;
@@ -24,53 +25,9 @@ class ShipTest {
     }
 
     @Test
-    void update() {
-        //TODO Add test
-    }
-
-    @Test
     void defineShip() {
         ship.defineShip();
         assertEquals(22000 / Main.PPM, ship.getX());
     }
 
-    @Test
-    void moveUp() {
-        //TODO Add test
-    }
-
-    @Test
-    void moveDown() {
-        //TODO Add test
-    }
-
-    @Test
-    void moveLeft() {
-        //TODO Add test
-    }
-
-    @Test
-    void moveRight() {
-        //TODO Add test
-    }
-
-    @Test
-    void stopShip() {
-        //TODO Add test
-    }
-
-    @Test
-    void cannonRight() {
-        //TODO Add test
-    }
-
-    @Test
-    void cannonLeft() {
-        //TODO Add test
-    }
-
-    @Test
-    void dispose() {
-        //TODO Add test
-    }
 }
