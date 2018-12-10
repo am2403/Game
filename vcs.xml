@@ -14,8 +14,12 @@
           <option name="url" value="https://github.com/Odi-on/SEPR_GAME.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/am2403/Game.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="C:\Users\Prince Odion\IdeaProjects" />
+    <option name="cloneParentDir" value="C:\Users\Prince Odion\Documents" />
   </component>
 </application>
