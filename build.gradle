@@ -1,0 +1,83 @@
+buildscript {
+    
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        jcenter()
+        google()
+    }
+    dependencies {
+        
+
+    }
+}
+
+allprojects {
+    apply plugin: "eclipse"
+    apply plugin: "idea"
+
+    version = '1.0'
+    ext {
+        appName = "RIse of the Seamen"
+        gdxVersion = '1.9.8'
+        roboVMVersion = '2.3.5'
+        box2DLightsVersion = '1.4'
+        ashleyVersion = '1.7.0'
+        aiVersion = '1.8.0'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+}
+
+project(":desktop") {
+    apply plugin: "java"
+
+
+    dependencies {
+        compile project(":core")
+        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        
+    }
+}
+
+project(":core") {
+    apply plugin: "java"
+
+    sourceSets.test.java.srcDirs = ["/src/test/java"]
+
+    repositories{mavenCentral()}
+
+    dependencies {
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+        testRuntimeOnly ('org.junit.jupiter:junit-jupiter-engine:5.1.0')
+        testCompile (
+                "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion",
+                "com.badlogicgames.gdx:gdx:$gdxVersion",
+                "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop",
+                "com.badlogicgames.gdx:gdx-box2d:$gdxVersion",
+                "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        )
+    }
+
+    test{
+        useJUnitPlatform()
+    }
+}
+
+tasks.eclipse.doLast {
+    delete ".project"
+}
