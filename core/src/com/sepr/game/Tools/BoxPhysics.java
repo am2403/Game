@@ -6,7 +6,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import com.sepr.game.Screens.PlayScreen;
-import com.sepr.game.Sprites.Land;
+import com.sepr.game.Sprites.Dock;
+
 
 public class BoxPhysics {
 
@@ -16,16 +17,18 @@ public class BoxPhysics {
 
         //Create body and fixture variables
         BodyDef bdef = new BodyDef();
-        PolygonShape shape = new PolygonShape();
         FixtureDef fdef = new FixtureDef();
+        PolygonShape shape = new PolygonShape();
         Body body;
 
-        //Create ground body
+        //Set Docks as collidable
 
-        for(MapObject object : map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
+        for(MapObject object : map.getLayers().get(9).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Land(screen, rect);
+            new Dock(screen, rect);
         }
+
+
 
 
     }

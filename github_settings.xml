@@ -1,0 +1,7 @@
+<application>
+  <component name="GithubAccounts">
+    <account id="a2a645c0-52b7-46b9-9cdd-0bd2f1bd15b4" name="Odi-on">
+      <server host="github.com" />
+    </account>
+  </component>
+</application>

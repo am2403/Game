@@ -51,9 +51,9 @@ public class PlayScreen implements Screen {
         hud = new HUD(game.batch);
 
         mapLoader = new TmxMapLoader();
-        map = mapLoader.load("Map/worldmap2.tmx");
+        map = mapLoader.load("Map/map.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1/Main.PPM);
-        gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
+        gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
 
         world  = new World(new Vector2(0, 0), true); // Can apply gravity / wind speed forces
         b2dr = new Box2DDebugRenderer();
@@ -80,12 +80,10 @@ public class PlayScreen implements Screen {
         if(Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)){
             if(Gdx.input.isKeyPressed(Input.Keys.W))
                 ship.moveUp();
-            if(Gdx.input.isKeyPressed(Input.Keys.S))
-                ship.moveDown();
-            if(Gdx.input.isKeyPressed(Input.Keys.A))
-                ship.moveLeft();
-            if(Gdx.input.isKeyPressed(Input.Keys.D))
-                ship.moveRight();
+            if(Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+                ship.rotateClockwise();
+            if(Gdx.input.isKeyPressed(Input.Keys.LEFT))
+                ship.rotateCounterClockwise();
         } else {
             ship.stopShip();
         }
@@ -131,11 +129,18 @@ public class PlayScreen implements Screen {
         game.batch.begin();
         ship.draw(game.batch);
         fleet.draw(game.batch);
+
         game.batch.end();
 
         //Renders the fixed HUD
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
+
+        if(Gdx.input.isKeyPressed(Input.Keys.L)){
+            game.setScreen(new Department1(game));
+            dispose();
+        }
+
     }
 
     @Override
